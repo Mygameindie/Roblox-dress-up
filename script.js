@@ -110,20 +110,17 @@ function toggleVisibility(itemId, categoryName) {
     const selectedItem = document.getElementById(itemId);
     if (!selectedItem) return;
 
-    if (categoryName === 'base') return; // Base cannot be removed
+    if (categoryName === 'base' || categoryName.startsWith('face')) return; // Prevents base & face from being removed
 
     // For all categories, ensure only one item in the category is visible at a time
     if (selectedItem.style.visibility === 'visible') {
-        // If the item is already visible, hide it
         selectedItem.style.visibility = 'hidden';
     } else {
-        // Hide all other items in the same category
         document.querySelectorAll(`.${categoryName}`).forEach(item => {
             if (item.id !== itemId) {
                 item.style.visibility = 'hidden';
             }
         });
-        // Show the selected item
         selectedItem.style.visibility = 'visible';
     }
 
@@ -174,7 +171,8 @@ function blurButton(event) {
     event.target.blur(); // Remove focus from the button
 }
 
-// Function for Button 1: Show Base2 on press, hide on release
+// Button logic for Base2 and Base3
+
 function pressButton1(event) {
     blurButton(event);
     document.getElementById("base2-image").style.display = "block";
@@ -185,7 +183,6 @@ function releaseButton1(event) {
     document.getElementById("base2-image").style.display = "none";
 }
 
-// Function for Button 2: Show Base3 on press, hide on release
 function pressButton2(event) {
     blurButton(event);
     document.getElementById("base3-image").style.display = "block";
@@ -201,79 +198,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const button1 = document.querySelector(".button-1");
     const button2 = document.querySelector(".button-2");
 
-    // Button 1 (Base2)
-    button1.addEventListener("mousedown", pressButton1);
-    button1.addEventListener("mouseup", releaseButton1);
-    button1.addEventListener("touchstart", pressButton1, { passive: false });
-    button1.addEventListener("touchend", releaseButton1, { passive: false });
+    if (button1) {
+        button1.addEventListener("mousedown", pressButton1);
+        button1.addEventListener("mouseup", releaseButton1);
+        button1.addEventListener("touchstart", pressButton1, { passive: false });
+        button1.addEventListener("touchend", releaseButton1, { passive: false });
+    }
 
-    // Button 2 (Base3)
-    button2.addEventListener("mousedown", pressButton2);
-    button2.addEventListener("mouseup", releaseButton2);
-    button2.addEventListener("touchstart", pressButton2, { passive: false });
-    button2.addEventListener("touchend", releaseButton2, { passive: false });
+    if (button2) {
+        button2.addEventListener("mousedown", pressButton2);
+        button2.addEventListener("mouseup", releaseButton2);
+        button2.addEventListener("touchstart", pressButton2, { passive: false });
+        button2.addEventListener("touchend", releaseButton2, { passive: false });
+    }
 });
 
 // Start the game
 function enterGame() {
     document.querySelector('.main-menu').style.display = 'none';
     document.querySelector('.game-container').style.display = 'block';
-}
-
-// Helper function to hide items for specific categories
-function hideSpecificCategories(categories) {
-    categories.forEach(category => {
-        const items = document.querySelectorAll(`.${category}`);
-        items.forEach(item => {
-            item.style.visibility = 'hidden';
-        });
-    });
-}
-
-// Load items in batches to reduce load time and improve responsiveness
-async function loadItemsInBatches(batchSize = 3) {
-    const baseContainer = document.querySelector('.base-container');
-    const controlsContainer = document.querySelector('.controls');
-    
-    for (let i = 0; i < jsonFiles.length; i += batchSize) {
-        const batch = jsonFiles.slice(i, i + batchSize);
-
-        await Promise.all(batch.map(async file => {
-            const data = await loadItemFile(file);
-            const categoryName = file.replace('.json', '');
-            const categoryContainer = document.createElement('div');
-            categoryContainer.classList.add('category');
-
-            const categoryHeading = document.createElement('h3');
-            categoryHeading.textContent = categoryName;
-            categoryContainer.appendChild(categoryHeading);
-
-            data.forEach(item => {
-                const itemId = item.id.endsWith('.png') ? item.id : `${item.id}.png`;
-
-                const img = document.createElement('img');
-                img.id = itemId;
-                img.src = item.src;
-                img.alt = item.alt;
-                img.classList.add(categoryName);
-                img.setAttribute('data-file', file);
-                img.style.visibility = item.visibility === "visible" ? "visible" : "hidden";
-                img.style.position = 'absolute';
-                img.style.zIndex = getZIndex(categoryName);
-                baseContainer.appendChild(img);
-
-                const button = document.createElement('img');
-                const buttonFile = item.src.replace('.png', 'b.png');
-                button.src = buttonFile;
-                button.alt = item.alt + ' Button';
-                button.classList.add('item-button');
-                button.onclick = () => toggleVisibility(itemId, categoryName);
-                categoryContainer.appendChild(button);
-            });
-
-            controlsContainer.appendChild(categoryContainer);
-        }));
-
-        await new Promise(resolve => setTimeout(resolve, 0.1));
-    }
 }
