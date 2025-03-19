@@ -1,0 +1,263 @@
+/* General Reset */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 500vh;
+    margin: 0;
+    background-image: url('background.jpg');
+    background-size: 1180px 500px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Main menu and game container */
+.game-container, .main-menu {
+    text-align: center;
+    width: 100%;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.main-menu img {
+    width: 500px;
+    height: auto;
+    margin-top: -156px;
+}
+
+.main-menu button {
+    margin-top: 100px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #6200ea;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.main-menu button:hover {
+    background-color: #3700b3;
+}
+
+.game-container {
+    display: none;
+}
+
+/* Base container */
+.base-container {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin: 10px auto 0 auto;
+}
+
+/* Base image and layering */
+.base-container img {
+    width: 500px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    pointer-events: none;
+}
+
+/* Controls section */
+.controls {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    transition: flex-wrap 0.3s ease-in-out;
+}
+
+/* Category styling */
+.category {
+    margin: 100px;
+}
+
+/* Category group styling */
+.category-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.category-group h3 {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Z-index layering */
+.Base-image { z-index: 1; }
+.bottomunderwear { z-index: 2; }
+.topunderwear { z-index: 3; }
+.boxers { z-index: 4; }
+.sweatshirt { z-index: 5; }
+.shoes { z-index: 7; }
+.pants { z-index: 8; }
+.skirt { z-index: 9; }
+.top { z-index: 10; }
+.dress { z-index: 11; }
+.jacket { z-index: 12; }
+.accessories { z-index: 13; }
+.hat { z-index: 14; }
+
+/* Controls button styling */
+.controls img {
+    cursor: pointer;
+    width: 50px;
+    height: auto;
+    margin: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.controls img:hover {
+    border-color: #6200ea;
+}
+
+.base-container {
+    transition: all 0.3s ease-in-out;
+}
+
+.preset-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.preset-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease-in-out;
+}
+
+.preset-button:hover {
+    background-color: #388E3C;
+}
+
+/* Responsive Background Fix for Smaller Screens */
+@media (max-width: 600px) {
+    body {
+        background-size: 600px 500px;
+        width: 100vw;
+    }
+
+    .base-container {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .base-container img {
+        width: 100%;
+    }
+
+    .controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .controls img {
+        width: 40px;
+    }
+
+    .main-menu img {
+        width: 80%;
+    }
+
+    .main-menu button {
+        width: 90%;
+        font-size: 16px;
+    }
+}
+
+/* Ensure base container scales with screen */
+.base-container {
+    position: relative;
+    width: 50vw; /* Adjust width dynamically */
+    max-width: 500px; /* Limit max width */
+    height: auto;
+    aspect-ratio: 5 / 4; /* Maintain aspect ratio */
+    margin: 10px auto;
+}
+
+/* Ensure images inside the base-container scale properly */
+.base-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Ensure buttons scale with the base container */
+.small-button {
+    position: absolute;
+    width: 3%; /* Adjusted size dynamically */
+    height: 3%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Centering */
+}
+
+/* Button Positions (Relative to Base Container) */
+.button-1 {
+    top: 40%; /* Adjusted using percentage */
+    left: 35%;
+}
+
+.button-2 {
+    top: 40%;
+    left: 65%;
+}
+
+/* Responsive Scaling */
+@media (max-width: 600px) {
+    .base-container {
+        width: 90vw; /* Expand width on smaller screens */
+        max-width: 400px;
+    }
+
+    .small-button {
+        width: 4%;
+        height: 4%;
+    }
+}

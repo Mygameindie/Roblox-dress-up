@@ -1,0 +1,34 @@
+{
+    "category-selection": [
+        {
+            "button": {
+                "onclick": "selectCategory('top1')",
+                "text": "Tops"
+            }
+        },
+        {
+            "button": {
+                "onclick": "selectCategory('pants1')",
+                "text": "Pants"
+            }
+        },
+        {
+            "button": {
+                "onclick": "selectCategory('skirt1')",
+                "text": "Skirts"
+            }
+        },
+        {
+            "button": {
+                "onclick": "selectCategory('shoes1')",
+                "text": "Shoes"
+            }
+        },
+        {
+            "button": {
+                "onclick": "selectCategory('hat1')",
+                "text": "Hats"
+            }
+        }
+    ]
+}

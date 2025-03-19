@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Dress-Up Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scroll.css"> <!-- Link to the new CSS -->
+</head>
+<body>
+    <div class="main-menu">
+        <img src="Mainmenu.png" alt="Main Menu Image">
+        <button onclick="enterGame()">Play</button>
+    </div>
+
+    <div class="game-container">
+        <div class="base-container">
+            <img id="base-image" src="Base.png" alt="Base Image">
+            <img id="base2-image" src="Base2.png" alt="Base 2" style="display: none;">
+            <img id="base3-image" src="Base3.png" alt="Base 3" style="display: none;">
+            
+            <button class="small-button button-1" onclick="changeToBase2()"></button>
+            <button class="small-button button-2" onclick="changeToBase3()"></button>
+			
+        </div>
+
+
+        <!-- Scrollable Buttons for Categories -->
+        <div class="controls">
+            <div class="scrollable-buttons">
+                <!-- Buttons will be generated dynamically from scrolls.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="script.js"></script>
+    <script src="preset.js"></script>  
+    <script src="scrolls.js"></script> <!-- Link to the new JavaScript -->
+</body>
+</html>

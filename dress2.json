@@ -1,0 +1,14 @@
+[
+    {
+        "id": "dress2_1",
+        "src": "dress2_1.png",
+        "alt": "Dress2 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress2_2",
+        "src": "dress2_2.png",
+        "alt": "Dress2 Item 2",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "backpack2_1",
+        "src": "backpack2_1.png",
+        "alt": "Backpack2 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "backpack2_2",
+        "src": "backpack2_2.png",
+        "alt": "Backpack2 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "backpack2_3",
+        "src": "backpack2_3.png",
+        "alt": "Backpack2 Item 3",
+        "visibility": "hidden"
+    }
+]
