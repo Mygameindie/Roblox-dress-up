@@ -1,0 +1,26 @@
+[
+    {
+        "id": "scarf1_1",
+        "src": "scarf1_1.png",
+        "alt": "Scarf1 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "scarf1_2",
+        "src": "scarf1_2.png",
+        "alt": "Scarf1 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "scarf1_3",
+        "src": "scarf1_3.png",
+        "alt": "Scarf1 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "scarf1_4",
+        "src": "scarf1_4.png",
+        "alt": "Scarf1 Item 4",
+        "visibility": "hidden"
+    }
+]
