@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { "name": "Default", "action": applyDefaultPreset },
     { "name": "Halloween", "action": applyHalloweenPreset },
     { "name": "Sea Creature", "action": applySeaCreaturePreset },
-    { "name": "Sun & Moon", "action": applySunMoonPreset },
+    { "name": "Star & Moon", "action": applySunMoonPreset },
     { "name": "Birthday", "action": applyBirthdayPreset }
 	
 	];
