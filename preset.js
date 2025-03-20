@@ -84,11 +84,12 @@ function applySunMoonPreset() {
         showItem("backpack1_4.png", "backpack1");
         showItem("backpack2_3.png", "backpack2");
         showItem("dress1_1.png", "dress1");
+	 showItem("hat1_3.png", "hat1");
         showItem("dress2_2.png", "dress2");
         showItem("hat2_4.png", "hat2");
         showItem("scarf1_4.png", "scarf1");
         showItem("scarf2_1.png", "scarf2");
-        showItem("shoes1_2.png", "shoes1");
+        showItem("shoes1_1.png", "shoes1");
         showItem("shoes2_2.png", "shoes2");
     });
 }
@@ -101,8 +102,8 @@ function applySeaCreaturePreset() {
         showItem("bag1_3.png", "bag1");
         showItem("bag1_4.png", "bag1");
         showItem("hat1_2.png", "hat1");
-        showItem("hat2_3b.png", "hat2");
-        showItem("scarf1_3b.png", "scarf1");
+        showItem("hat2_3.png", "hat2");
+        showItem("scarf1_3.png", "scarf1");
     });
 }
 
