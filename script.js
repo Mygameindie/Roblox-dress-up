@@ -2,7 +2,7 @@
 const jsonFiles = [
     'backpack1.json', 'backpack2.json',
     'Base.json', // Base is always visible
-    'face1.json', 'face2.json',
+    'face1.json', 'face2.json', // Both faces must always be visible
     'bag1.json', 'bag2.json',
     'bow1.json',
     'dress1.json', 'dress2.json',
@@ -105,14 +105,36 @@ async function loadItemsInBatches(batchSize = 3) {
     ensureFaceVisibility();
 }
 
-// Toggle visibility of items, ensuring only one item per category is visible
 function toggleVisibility(itemId, categoryName) {
     const selectedItem = document.getElementById(itemId);
     if (!selectedItem) return;
 
-    if (categoryName === 'base' || categoryName.startsWith('face')) return; // Prevents base & face from being removed
+    if (categoryName === 'base') return; // Prevent Base from being removed
 
-    // For all categories, ensure only one item in the category is visible at a time
+    // Handle Face1 and Face2 separately to ensure one is always visible
+    if (categoryName.startsWith('face1') || categoryName.startsWith('face2')) {
+        const faceType = categoryName.startsWith('face1') ? 'face1' : 'face2';
+
+        // Get all face items in the same face category
+        const faceItems = document.querySelectorAll(`.${faceType}`);
+
+        let isCurrentlyVisible = selectedItem.style.visibility === 'visible';
+
+        // If the selected face item is already visible, do nothing (prevent turning it off)
+        if (isCurrentlyVisible) return;
+
+        // Hide all other face items in the same category
+        faceItems.forEach(item => {
+            item.style.visibility = 'hidden';
+        });
+
+        // Make the selected face item visible
+        selectedItem.style.visibility = 'visible';
+
+        return;
+    }
+
+    // For all other categories, ensure only one item in the category is visible at a time
     if (selectedItem.style.visibility === 'visible') {
         selectedItem.style.visibility = 'hidden';
     } else {
@@ -125,7 +147,6 @@ function toggleVisibility(itemId, categoryName) {
     }
 
     ensureBaseVisibility();
-    ensureFaceVisibility();
 }
 
 // Ensure Base is always visible
@@ -134,13 +155,15 @@ function ensureBaseVisibility() {
     if (baseItem) baseItem.style.visibility = 'visible';
 }
 
-// Ensure at least one face is always visible
+// Ensure both faces are always visible
 function ensureFaceVisibility() {
     const faceItems = document.querySelectorAll('.face1, .face2');
-    if (faceItems.length > 0 && [...faceItems].every(item => item.style.visibility === 'hidden')) {
-        faceItems[0].style.visibility = 'visible';
-    }
+    faceItems.forEach(face => {
+        face.style.visibility = 'visible'; // Force both faces to stay visible
+    });
 }
+
+
 
 // Adjust layout based on screen size
 function adjustCanvasLayout() {
@@ -170,48 +193,6 @@ function blurButton(event) {
     event.preventDefault(); // Prevent default focus behavior
     event.target.blur(); // Remove focus from the button
 }
-
-// Button logic for Base2 and Base3
-
-function pressButton1(event) {
-    blurButton(event);
-    document.getElementById("base2-image").style.display = "block";
-}
-
-function releaseButton1(event) {
-    blurButton(event);
-    document.getElementById("base2-image").style.display = "none";
-}
-
-function pressButton2(event) {
-    blurButton(event);
-    document.getElementById("base3-image").style.display = "block";
-}
-
-function releaseButton2(event) {
-    blurButton(event);
-    document.getElementById("base3-image").style.display = "none";
-}
-
-// Add event listeners to buttons (Support Desktop & Mobile)
-document.addEventListener("DOMContentLoaded", () => {
-    const button1 = document.querySelector(".button-1");
-    const button2 = document.querySelector(".button-2");
-
-    if (button1) {
-        button1.addEventListener("mousedown", pressButton1);
-        button1.addEventListener("mouseup", releaseButton1);
-        button1.addEventListener("touchstart", pressButton1, { passive: false });
-        button1.addEventListener("touchend", releaseButton1, { passive: false });
-    }
-
-    if (button2) {
-        button2.addEventListener("mousedown", pressButton2);
-        button2.addEventListener("mouseup", releaseButton2);
-        button2.addEventListener("touchstart", pressButton2, { passive: false });
-        button2.addEventListener("touchend", releaseButton2, { passive: false });
-    }
-});
 
 // Start the game
 function enterGame() {
