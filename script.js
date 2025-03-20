@@ -3,13 +3,19 @@ const jsonFiles = [
     'backpack1.json', 'backpack2.json',
     'Base.json', // Base is always visible
     'face1.json', 'face2.json', // Both faces must always be visible
-    'bag1.json', 'bag2.json',
-    'bow1.json',
-    'dress1.json', 'dress2.json',
-    'hat1.json', 'hat2.json',
-    'scarf1.json', 'scarf2.json',
-    'shoes1.json', 'shoes2.json',
-    'socks1.json',
+	'socks1.json',
+	    'shoes1.json', 'shoes2.json',
+		'dress1.json', 'dress2.json',
+		    'bag1.json', 'bag2.json',
+		'scarf1.json', 'scarf2.json',
+		 'bow1.json',
+		 'hat1.json', 'hat2.json',
+
+   
+    
+
+
+    
 ];
 
 // Helper function to set z-index for categories
