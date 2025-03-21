@@ -100,7 +100,7 @@ function applySeaCreaturePreset() {
         showItem("backpack1_3.png", "backpack1");
         showItem("backpack2_2.png", "backpack2");
         showItem("bag1_3.png", "bag1");
-        showItem("bag1_4.png", "bag1");
+        showItem("bag2_2.png", "bag2");
         showItem("hat1_2.png", "hat1");
         showItem("hat2_3.png", "hat2");
         showItem("scarf1_3.png", "scarf1");
