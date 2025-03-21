@@ -4,5 +4,11 @@
         "src": "bag2_1.png",
         "alt": "Bag2 Item 1",
         "visibility": "hidden"
+    },
+	{
+        "id": "bag2_2",
+        "src": "bag2_2.png",
+        "alt": "Bag2 Item 2",
+        "visibility": "hidden"
     }
 ]
